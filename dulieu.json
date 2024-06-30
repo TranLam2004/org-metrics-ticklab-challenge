@@ -1,11 +1,5 @@
 {
   "repos": {},
-  "members": [
-    "amyranotamirror",
-    "ngyngcphu",
-    "phucvinh57",
-    "quannhg"
-  ],
   "info": {
     "login": "TickLabVN",
     "avatar_url": "https://avatars.githubusercontent.com/u/128288626?v=4",
@@ -23,5 +17,11 @@
     "company": null,
     "name": "TickLab",
     "twitter_username": null
-  }
+  },
+  "members": [
+    "amyranotamirror",
+    "ngyngcphu",
+    "phucvinh57",
+    "quannhg"
+  ]
 }

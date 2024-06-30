@@ -116,8 +116,9 @@ let totalLanguages = {};
 getORGRepos(orgname)
   .then(async (repos) => {
     if (repos) {
+      let totalContributions = 0;
       for (const repo of repos) {
-        let totalContributions = 0;
+        let repoContributions = 0;
         let languages = {};
         let memberCommits = {};
 
@@ -125,7 +126,7 @@ getORGRepos(orgname)
         const contributors = await getRepoContributors(orgname, repo.name);
         if (Array.isArray(contributors)) {
           contributors.forEach((contributor) => {
-            totalContributions += contributor.contributions;
+            repoContributions += contributor.contributions;
             memberCommits[contributor.login] =
               (memberCommits[contributor.login] || 0) +
               contributor.contributions;
