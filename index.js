@@ -38,7 +38,7 @@ const getRepoContributors = async (orgname, repo) => {
   return fetchJSON(url);
 };
 
-//Hàm lấy languages từ repo
+// Hàm lấy languages từ repo
 const getRepoLanguages = async (orgname, repo) => {
   const url = `https://api.github.com/repos/${orgname}/${repo}/languages`;
   return fetchJSON(url);
@@ -108,54 +108,136 @@ const getORGmembers = async (orgname) => {
   return fetchJSON(url);
 };
 
-// Khởi tạo data
-let data = {};
+const Is_memberOrg = async (repos, members) => {
+  // Duyệt qua tất cả các repo
+  for (const repo in repos) {
+    // Lấy danh sách memberCommits của repo hiện tại
+    const memberCommits = repos[repo].memberCommits;
+
+    // Kiểm tra xem có ít nhất một member trong danh sách members có xuất hiện trong memberCommits không
+    for (const member of members) {
+      if (memberCommits.hasOwnProperty(member)) {
+        return true; // Nếu có ít nhất một member xuất hiện, trả về true
+      }
+    }
+  }
+
+  return false; // Nếu không có member nào xuất hiện, trả về false
+};
+
+//Hàm xử lý dữ liệu
+const UpdateData = async (data) => {
+  const updatedRepos = {};
+  let totalStars = 0;
+  let totalPRs = 0;
+  let totalMergedPRs = 0;
+  let totalContributions = 0;
+  let totalLanguages = {};
+  let totalMemberCommits = {};
+
+  for (const member of data.members) {
+    totalMemberCommits[member] = 0;
+  }
+
+  for (const repo in data.repos) {
+    const repoData = data.repos[repo];
+
+    // Kiểm tra xem repo có ít nhất một member trong members không
+    const isMemberOrg = await Is_memberOrg({ [repo]: repoData }, data.members);
+
+    if (isMemberOrg) {
+      // Chỉ giữ lại những người có trong data.members
+      const filteredMemberCommits = {};
+      for (const member of data.members) {
+        if (repoData.memberCommits.hasOwnProperty(member)) {
+          filteredMemberCommits[member] = repoData.memberCommits[member];
+          totalMemberCommits[member] += repoData.memberCommits[member];
+        }
+      }
+
+      // Tính tổng contributions cho repo hiện tại
+      const repoContributions = Object.values(filteredMemberCommits).reduce(
+        (sum, contributions) => sum + contributions,
+        0
+      );
+
+      // Cập nhật thông tin repo trong updatedRepos
+      updatedRepos[repo] = {
+        contributions: repoContributions,
+        languages: repoData.languages,
+        memberCommits: filteredMemberCommits,
+        stars: repoData.stars,
+        pullRequests: repoData.pullRequests,
+        mergedPullRequests: repoData.mergedPullRequests,
+      };
+
+      // Cộng dồn vào tổng số liệu
+      totalStars += repoData.stars;
+      totalPRs += repoData.pullRequests;
+      totalMergedPRs += repoData.mergedPullRequests;
+      totalContributions += repoContributions;
+
+      for (const [language, lines] of Object.entries(repoData.languages)) {
+        totalLanguages[language] = (totalLanguages[language] || 0) + lines;
+      }
+    }
+  }
+
+  // Cập nhật lại data với các tổng số liệu mới
+  data.repos = updatedRepos;
+  data.totalStars = totalStars;
+  data.totalPRs = totalPRs;
+  data.totalMergedPRs = totalMergedPRs;
+  data.totalContributions = totalContributions;
+  data.totalLanguages = totalLanguages;
+  data.totalMemberCommits = totalMemberCommits;
+  saveDataToFile(data);
+};
+
 // Hàm lưu biến data
-const saveDataToFile = () => {
+const saveDataToFile = (data) => {
   fs.writeFileSync("data.json", JSON.stringify(data, null, 2), "utf-8");
 };
 
+// Khởi tạo data
+let data = {};
 // Lấy thông tin tổ chức và lưu vào file
-getORGInfo(orgname).then((info) => {
-  data.info = {
-    login: info.login,
-    avatar_url: info.avatar_url,
-    description: info.description,
-    blog: info.blog,
-    location: info.location,
-    email: info.email,
-    public_repos: info.public_repos,
-    public_gists: info.public_gists,
-    followers: info.followers,
-    following: info.following,
-    created_at: info.created_at,
-    updated_at: info.updated_at,
-    type: info.type,
-    company: info.company,
-    name: info.name,
-    twitter_username: info.twitter_username,
-  };
+getORGInfo(orgname)
+  .then((info) => {
+    data.info = {
+      login: info.login,
+      avatar_url: info.avatar_url,
+      description: info.description,
+      blog: info.blog,
+      location: info.location,
+      email: info.email,
+      public_repos: info.public_repos,
+      public_gists: info.public_gists,
+      followers: info.followers,
+      following: info.following,
+      created_at: info.created_at,
+      updated_at: info.updated_at,
+      type: info.type,
+      company: info.company,
+      name: info.name,
+      twitter_username: info.twitter_username,
+    };
 
-  saveDataToFile();
-});
+    saveDataToFile(data);
 
-// Lấy danh sách thành viên và lưu vào file
-data.members = [];
-getORGmembers(orgname).then((members) => {
-  data.members = members.map((member) => member.login); // Chỉ lấy thuộc tính login
-  saveDataToFile();
-});
+    // Lấy danh sách thành viên và lưu vào file
+    return getORGmembers(orgname);
+  })
+  .then((members) => {
+    data.members = members.map((member) => member.login); // Chỉ lấy thuộc tính login
+    saveDataToFile(data);
 
-// Lấy thông tin các repo và xử lý dữ liệu
-data.repos = {};
-let totalStars = 0;
-let totalPRs = 0;
-let totalMergedPRs = 0;
-let totalContributions = 0;
-let totalLanguages = {};
-
-getORGRepos(orgname)
+    // Lấy thông tin các repo và xử lý dữ liệu
+    return getORGRepos(orgname);
+  })
   .then(async (repos) => {
+    data.repos = {};
+
     if (repos) {
       for (const repo of repos) {
         let repoContributions = 0;
@@ -174,7 +256,6 @@ getORGRepos(orgname)
               (memberCommits[contributor.login] || 0) +
               contributor.contributions;
           });
-          totalContributions += repoContributions;
         } else {
           console.warn(
             `Định dạng contributors không mong đợi cho repo ${repo.name}:`,
@@ -187,21 +268,17 @@ getORGRepos(orgname)
         if (languages) {
           for (const [language, lines] of Object.entries(languages)) {
             repoLanguages[language] = (repoLanguages[language] || 0) + lines;
-            totalLanguages[language] = (totalLanguages[language] || 0) + lines;
           }
         }
 
         // Lấy số sao của repo
         repoStars = await getRepoStars(orgname, repo.name);
-        totalStars += repoStars;
 
         // Lấy số PR của repo
         repoPRs = await getRepoPullRequests(orgname, repo.name);
-        totalPRs += repoPRs;
 
         // Lấy số PR đã merge của repo
         repoMergedPRs = await getRepoMergedPullRequests(orgname, repo.name);
-        totalMergedPRs += repoMergedPRs;
 
         // Lưu thông tin vào data
         data.repos[repo.name] = {
@@ -214,13 +291,8 @@ getORGRepos(orgname)
         };
       }
 
-      // Lưu tổng số sao, PR, PR đã merge, contributions và languages vào data
-      data.totalStars = totalStars;
-      data.totalPRs = totalPRs;
-      data.totalMergedPRs = totalMergedPRs;
-      data.totalContributions = totalContributions;
-      data.totalLanguages = totalLanguages;
-      saveDataToFile();
+      await UpdateData(data); // Cập nhật dữ liệu sau khi lấy tất cả thông tin repo
+      saveDataToFile(data); // Lưu dữ liệu sau khi cập nhật
     }
   })
   .catch((error) => {

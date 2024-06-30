@@ -1,4 +1,22 @@
 {
+  "info": {
+    "login": "TickLabVN",
+    "avatar_url": "https://avatars.githubusercontent.com/u/128288626?v=4",
+    "description": "Start here, go anywhere",
+    "blog": "https://ticklab.vn",
+    "location": "Vietnam",
+    "email": "ticklab.vn@gmail.com",
+    "public_repos": 20,
+    "public_gists": 0,
+    "followers": 10,
+    "following": 0,
+    "created_at": "2023-03-19T09:47:22Z",
+    "updated_at": "2024-02-15T15:26:53Z",
+    "type": "Organization",
+    "company": null,
+    "name": "TickLab",
+    "twitter_username": null
+  },
   "members": [
     "amyranotamirror",
     "ngyngcphu",
@@ -16,35 +34,19 @@
       "pullRequests": 0,
       "mergedPullRequests": 0
     },
-    "Discussion": {
-      "contributions": 0,
-      "languages": {},
-      "memberCommits": {},
-      "stars": 0,
-      "pullRequests": 0,
-      "mergedPullRequests": 0
-    },
-    "Recruitments": {
-      "contributions": 0,
-      "languages": {},
-      "memberCommits": {},
-      "stars": 0,
-      "pullRequests": 0,
-      "mergedPullRequests": 0
-    },
     "simple-csv-query-tool": {
       "contributions": 36,
       "languages": {},
       "memberCommits": {
-        "phucvinh57": 33,
-        "ngyngcphu": 3
+        "ngyngcphu": 3,
+        "phucvinh57": 33
       },
       "stars": 4,
       "pullRequests": 4,
       "mergedPullRequests": 1
     },
     "ssps-fe": {
-      "contributions": 162,
+      "contributions": 121,
       "languages": {
         "TypeScript": 215615,
         "JavaScript": 858,
@@ -54,19 +56,14 @@
         "Shell": 236
       },
       "memberCommits": {
-        "ngyngcphu": 121,
-        "TanNguyen17112003": 17,
-        "github-actions[bot]": 11,
-        "MLAkainu": 8,
-        "Minhtuei": 4,
-        "qmi03": 1
+        "ngyngcphu": 121
       },
       "stars": 0,
       "pullRequests": 30,
       "mergedPullRequests": 31
     },
     "ssps-be": {
-      "contributions": 129,
+      "contributions": 127,
       "languages": {
         "TypeScript": 115776,
         "JavaScript": 2134,
@@ -74,75 +71,57 @@
         "Shell": 216
       },
       "memberCommits": {
-        "quannhg": 126,
-        "github-actions[bot]": 2,
-        "ngyngcphu": 1
+        "ngyngcphu": 1,
+        "quannhg": 126
       },
       "stars": 0,
       "pullRequests": 30,
       "mergedPullRequests": 48
     },
     "git-workflow": {
-      "contributions": 13,
+      "contributions": 11,
       "languages": {
         "Shell": 342
       },
       "memberCommits": {
-        "quannhg": 11,
-        "github-actions[bot]": 2
+        "quannhg": 11
       },
       "stars": 0,
       "pullRequests": 9,
       "mergedPullRequests": 7
     },
     "knowledge": {
-      "contributions": 29,
+      "contributions": 28,
       "languages": {
         "HTML": 17207
       },
       "memberCommits": {
-        "ngyngcphu": 16,
-        "phucvinh57": 6,
         "amyranotamirror": 6,
-        "github-actions[bot]": 1
+        "ngyngcphu": 16,
+        "phucvinh57": 6
       },
       "stars": 0,
       "pullRequests": 13,
       "mergedPullRequests": 13
     },
-    "TensorRT-MDE": {
-      "contributions": 1,
-      "languages": {
-        "Python": 33432
-      },
-      "memberCommits": {
-        "VuHuy-cse-9": 1
-      },
-      "stars": 0,
-      "pullRequests": 0,
-      "mergedPullRequests": 0
-    },
     "tpulse": {
-      "contributions": 309,
+      "contributions": 115,
       "languages": {
-        "Rust": 90595,
-        "TypeScript": 58775,
-        "JavaScript": 3526,
+        "Rust": 90969,
+        "TypeScript": 45682,
+        "JavaScript": 3477,
         "CSS": 755,
         "HTML": 366,
         "Shell": 126
       },
       "memberCommits": {
-        "Huy-DNA": 144,
-        "TanNguyen17112003": 55,
-        "quannhg": 51,
-        "phucvinh57": 35,
         "ngyngcphu": 19,
-        "Minhtuei": 5
+        "phucvinh57": 45,
+        "quannhg": 51
       },
       "stars": 19,
       "pullRequests": 30,
-      "mergedPullRequests": 42
+      "mergedPullRequests": 43
     },
     "tpulse-browser-extension": {
       "contributions": 14,
@@ -154,8 +133,8 @@
       },
       "memberCommits": {
         "ngyngcphu": 9,
-        "quannhg": 3,
-        "phucvinh57": 2
+        "phucvinh57": 2,
+        "quannhg": 3
       },
       "stars": 0,
       "pullRequests": 7,
@@ -172,18 +151,6 @@
       "stars": 35,
       "pullRequests": 4,
       "mergedPullRequests": 4
-    },
-    "DMFDepth": {
-      "contributions": 0,
-      "languages": {
-        "JavaScript": 99640,
-        "HTML": 14115,
-        "CSS": 1760
-      },
-      "memberCommits": {},
-      "stars": 0,
-      "pullRequests": 0,
-      "mergedPullRequests": 0
     },
     "org-metrics": {
       "contributions": 3,
@@ -215,113 +182,36 @@
       "pullRequests": 0,
       "mergedPullRequests": 0
     },
-    "discord_vision": {
-      "contributions": 2,
-      "languages": {},
-      "memberCommits": {
-        "thaitran24": 2
-      },
-      "stars": 0,
-      "pullRequests": 0,
-      "mergedPullRequests": 0
-    },
-    "development-path": {
-      "contributions": 3109,
-      "languages": {
-        "TypeScript": 985495,
-        "Astro": 180394,
-        "JavaScript": 62221,
-        "CSS": 8762,
-        "Shell": 5653
-      },
-      "memberCommits": {
-        "kamranahmedse": 2260,
-        "dansholds": 104,
-        "iArchitSharma": 102,
-        "arikchakma": 95,
-        "lovemycodesnippets": 70,
-        "paulmarsicloud": 69,
-        "aroyan": 37,
-        "andran777": 33,
-        "adnn-alc": 30,
-        "h-s04": 25,
-        "CodeWithUma": 23,
-        "syedmouaazfarrukh": 22,
-        "selvamuthukumaran1": 22,
-        "codeguage-code": 20,
-        "sojinsamuel": 18,
-        "QAInsights": 16,
-        "kjthorpe18": 16,
-        "Olayanju-1234": 15,
-        "belikedeep": 14,
-        "esoterydactyl": 13,
-        "skieurfoufou": 11,
-        "dev-aly3n": 11,
-        "pixel365": 11,
-        "mauriallegrettiswnat": 11,
-        "durrezahmed": 11,
-        "c1phani1simha": 10,
-        "haseeb-xd": 10,
-        "HijenHEK": 10,
-        "kartikver15gr8": 10,
-        "thamerla": 10
-      },
-      "stars": 1,
-      "pullRequests": 0,
-      "mergedPullRequests": 0
-    },
-    "monitoring-example": {
-      "contributions": 0,
-      "languages": {},
-      "memberCommits": {},
-      "stars": 0,
-      "pullRequests": 0,
-      "mergedPullRequests": 0
-    },
     "server-downtime-alert-system": {
       "contributions": 5,
       "languages": {},
       "memberCommits": {
-        "quannhg": 4,
-        "phucvinh57": 1
+        "phucvinh57": 1,
+        "quannhg": 4
       },
       "stars": 0,
       "pullRequests": 0,
       "mergedPullRequests": 0
     }
   },
-  "info": {
-    "login": "TickLabVN",
-    "avatar_url": "https://avatars.githubusercontent.com/u/128288626?v=4",
-    "description": "Start here, go anywhere",
-    "blog": "https://ticklab.vn",
-    "location": "Vietnam",
-    "email": "ticklab.vn@gmail.com",
-    "public_repos": 20,
-    "public_gists": 0,
-    "followers": 10,
-    "following": 0,
-    "created_at": "2023-03-19T09:47:22Z",
-    "updated_at": "2024-02-15T15:26:53Z",
-    "type": "Organization",
-    "company": null,
-    "name": "TickLab",
-    "twitter_username": null
-  },
-  "totalStars": 59,
+  "totalStars": 58,
   "totalPRs": 127,
-  "totalMergedPRs": 152,
-  "totalContributions": 3825,
+  "totalMergedPRs": 153,
+  "totalContributions": 473,
   "totalLanguages": {
-    "TypeScript": 1381142,
-    "JavaScript": 168379,
-    "CSS": 12475,
+    "TypeScript": 382554,
+    "JavaScript": 6469,
+    "CSS": 1953,
     "Dockerfile": 1302,
-    "HTML": 32552,
-    "Shell": 6573,
-    "Python": 33432,
-    "Rust": 91916,
-    "Go": 10584,
-    "Astro": 180394
+    "HTML": 18437,
+    "Shell": 920,
+    "Rust": 92290,
+    "Go": 10584
+  },
+  "totalMemberCommits": {
+    "amyranotamirror": 6,
+    "ngyngcphu": 174,
+    "phucvinh57": 96,
+    "quannhg": 197
   }
 }
