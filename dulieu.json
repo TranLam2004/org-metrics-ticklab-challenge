@@ -1,5 +1,229 @@
 {
-  "repos": {},
+  "repos": {
+    ".github": {
+      "contributions": 5,
+      "languages": {},
+      "memberCommits": {
+        "phucvinh57": 5
+      }
+    },
+    "Discussion": {
+      "contributions": 5,
+      "languages": {},
+      "memberCommits": {}
+    },
+    "Recruitments": {
+      "contributions": 5,
+      "languages": {},
+      "memberCommits": {}
+    },
+    "simple-csv-query-tool": {
+      "contributions": 41,
+      "languages": {},
+      "memberCommits": {
+        "phucvinh57": 33,
+        "ngyngcphu": 3
+      }
+    },
+    "ssps-fe": {
+      "contributions": 203,
+      "languages": {
+        "TypeScript": 215615,
+        "JavaScript": 858,
+        "CSS": 650,
+        "Dockerfile": 413,
+        "HTML": 387,
+        "Shell": 236
+      },
+      "memberCommits": {
+        "ngyngcphu": 121,
+        "TanNguyen17112003": 17,
+        "github-actions[bot]": 11,
+        "MLAkainu": 8,
+        "Minhtuei": 4,
+        "qmi03": 1
+      }
+    },
+    "ssps-be": {
+      "contributions": 332,
+      "languages": {
+        "TypeScript": 115776,
+        "JavaScript": 2134,
+        "Dockerfile": 889,
+        "Shell": 216
+      },
+      "memberCommits": {
+        "quannhg": 126,
+        "github-actions[bot]": 2,
+        "ngyngcphu": 1
+      }
+    },
+    "git-workflow": {
+      "contributions": 345,
+      "languages": {
+        "Shell": 342
+      },
+      "memberCommits": {
+        "quannhg": 11,
+        "github-actions[bot]": 2
+      }
+    },
+    "knowledge": {
+      "contributions": 374,
+      "languages": {
+        "HTML": 17207
+      },
+      "memberCommits": {
+        "ngyngcphu": 16,
+        "phucvinh57": 6,
+        "amyranotamirror": 6,
+        "github-actions[bot]": 1
+      }
+    },
+    "TensorRT-MDE": {
+      "contributions": 375,
+      "languages": {
+        "Python": 33432
+      },
+      "memberCommits": {
+        "VuHuy-cse-9": 1
+      }
+    },
+    "tpulse": {
+      "contributions": 684,
+      "languages": {
+        "Rust": 90595,
+        "TypeScript": 58775,
+        "JavaScript": 3526,
+        "CSS": 755,
+        "HTML": 366,
+        "Shell": 126
+      },
+      "memberCommits": {
+        "Huy-DNA": 144,
+        "TanNguyen17112003": 55,
+        "quannhg": 51,
+        "phucvinh57": 35,
+        "ngyngcphu": 19,
+        "Minhtuei": 5
+      }
+    },
+    "tpulse-browser-extension": {
+      "contributions": 698,
+      "languages": {
+        "TypeScript": 5481,
+        "Rust": 1321,
+        "CSS": 548,
+        "HTML": 477
+      },
+      "memberCommits": {
+        "ngyngcphu": 9,
+        "quannhg": 3,
+        "phucvinh57": 2
+      }
+    },
+    "tonic": {
+      "contributions": 702,
+      "languages": {
+        "Go": 10584
+      },
+      "memberCommits": {
+        "phucvinh57": 4
+      }
+    },
+    "DMFDepth": {
+      "contributions": 702,
+      "languages": {
+        "JavaScript": 99640,
+        "HTML": 14115,
+        "CSS": 1760
+      },
+      "memberCommits": {}
+    },
+    "org-metrics": {
+      "contributions": 705,
+      "languages": {},
+      "memberCommits": {
+        "ngyngcphu": 3
+      }
+    },
+    "pomodoro": {
+      "contributions": 707,
+      "languages": {},
+      "memberCommits": {
+        "ngyngcphu": 2
+      }
+    },
+    "habit-chains-management-app": {
+      "contributions": 709,
+      "languages": {},
+      "memberCommits": {
+        "quannhg": 2
+      }
+    },
+    "discord_vision": {
+      "contributions": 711,
+      "languages": {},
+      "memberCommits": {
+        "thaitran24": 2
+      }
+    },
+    "development-path": {
+      "contributions": 3820,
+      "languages": {
+        "TypeScript": 985495,
+        "Astro": 180394,
+        "JavaScript": 62221,
+        "CSS": 8762,
+        "Shell": 5653
+      },
+      "memberCommits": {
+        "kamranahmedse": 2260,
+        "dansholds": 104,
+        "iArchitSharma": 102,
+        "arikchakma": 95,
+        "lovemycodesnippets": 70,
+        "paulmarsicloud": 69,
+        "aroyan": 37,
+        "andran777": 33,
+        "adnn-alc": 30,
+        "h-s04": 25,
+        "CodeWithUma": 23,
+        "syedmouaazfarrukh": 22,
+        "selvamuthukumaran1": 22,
+        "codeguage-code": 20,
+        "sojinsamuel": 18,
+        "QAInsights": 16,
+        "kjthorpe18": 16,
+        "Olayanju-1234": 15,
+        "belikedeep": 14,
+        "esoterydactyl": 13,
+        "skieurfoufou": 11,
+        "dev-aly3n": 11,
+        "pixel365": 11,
+        "mauriallegrettiswnat": 11,
+        "durrezahmed": 11,
+        "c1phani1simha": 10,
+        "haseeb-xd": 10,
+        "HijenHEK": 10,
+        "kartikver15gr8": 10,
+        "thamerla": 10
+      }
+    },
+    "monitoring-example": {
+      "contributions": 3820,
+      "languages": {},
+      "memberCommits": {}
+    },
+    "server-downtime-alert-system": {
+      "contributions": 3825,
+      "languages": {},
+      "memberCommits": {
+        "quannhg": 4,
+        "phucvinh57": 1
+      }
+    }
+  },
   "info": {
     "login": "TickLabVN",
     "avatar_url": "https://avatars.githubusercontent.com/u/128288626?v=4",
@@ -23,5 +247,18 @@
     "ngyngcphu",
     "phucvinh57",
     "quannhg"
-  ]
+  ],
+  "totalContributions": 3825,
+  "totalLanguages": {
+    "TypeScript": 1381142,
+    "JavaScript": 168379,
+    "CSS": 12475,
+    "Dockerfile": 1302,
+    "HTML": 32552,
+    "Shell": 6573,
+    "Python": 33432,
+    "Rust": 91916,
+    "Go": 10584,
+    "Astro": 180394
+  }
 }

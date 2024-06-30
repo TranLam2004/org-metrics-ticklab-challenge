@@ -1,5 +1,7 @@
+require("dotenv").config();
+const fetch = require("node-fetch");
 const fs = require("fs");
-const fetch = require("node-fetch"); // Đảm bảo bạn đã cài đặt node-fetch
+const token = process.env.TOKEN;
 const orgname = "TickLabVN";
 
 // Hàm để lấy dữ liệu JSON từ URL và xử lý lỗi nếu có
@@ -8,6 +10,7 @@ const fetchJSON = async (url) => {
     method: "GET",
     headers: {
       Accept: "application/vnd.github.v3+json",
+      Authorization: `Bearer ${token}`,
     },
   });
   if (!response.ok) {
