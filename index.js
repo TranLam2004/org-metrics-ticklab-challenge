@@ -106,6 +106,75 @@ const getRepoCommits = async (orgname, repo) => {
   return commits;
 };
 
+// Hàm lấy danh sách tất cả các commits trong khoảng thời gian từ repository
+const getRepoCommitsByMonth = async (orgname, repo, since, until) => {
+  const url = `https://api.github.com/repos/${orgname}/${repo}/commits?since=${since}&until=${until}`;
+  return fetchJSON(url);
+};
+
+// Hàm thống kê số contributions của từng member trong khoảng thời gian
+const getContributionsByMember = async (orgname, since, until) => {
+  const repos = await getORGRepos(orgname);
+
+  let contributionsByMember = {};
+
+  for (const repo of repos) {
+    try {
+      const commits = await getRepoCommitsByMonth(
+        orgname,
+        repo.name,
+        since,
+        until
+      );
+      if (commits) {
+        commits.forEach((commit) => {
+          const login = commit.author ? commit.author.login : "unknown";
+          if (!contributionsByMember[login]) {
+            contributionsByMember[login] = 0;
+          }
+          contributionsByMember[login] += 1;
+        });
+      } else {
+        console.log(`Không có commits trong repository ${repo.name}`);
+      }
+    } catch (error) {
+      if (error.message.includes("409")) {
+        console.log(
+          `Conflict error for repository ${repo.name}:`,
+          error.message
+        );
+      } else {
+        console.log(
+          `Lỗi xảy ra khi lấy commits của repository ${repo.name}:`,
+          error.message
+        );
+      }
+    }
+  }
+
+  return contributionsByMember;
+};
+
+// Hàm thống kê số contributions của từng member cho mỗi tháng trong 6 tháng qua
+const getContributionsLast6Months = async (orgname) => {
+  let contributionsByMonth = {};
+
+  for (let i = 0; i < 6; i++) {
+    let startDate = new Date();
+    startDate.setMonth(startDate.getMonth() - i - 1);
+    let endDate = new Date();
+    endDate.setMonth(endDate.getMonth() - i);
+
+    let since = startDate.toISOString();
+    let until = endDate.toISOString();
+
+    contributionsByMonth[endDate.getMonth() + 1 + "/" + endDate.getFullYear()] =
+      await getContributionsByMember(orgname, since, until);
+  }
+
+  return contributionsByMonth;
+};
+
 // Hàm lấy members
 const getORGmembers = async (orgname) => {
   const url = `https://api.github.com/orgs/${orgname}/members`;
@@ -127,6 +196,30 @@ const Is_memberOrg = async (repos, members) => {
   }
 
   return false; // Nếu không có member nào xuất hiện, trả về false
+};
+
+const Is_memberOrg_by6month = async (data, members) => {
+  let filteredMonths = {};
+
+  // Duyệt qua từng tháng trong data.by6month
+  for (const month in data.by6month) {
+    const monthData = data.by6month[month];
+
+    // Kiểm tra xem có thành viên nào xuất hiện trong tháng hiện tại không
+    let hasMember = members.some((member) => monthData.hasOwnProperty(member));
+
+    if (hasMember) {
+      // Nếu có thành viên xuất hiện, chỉ giữ lại những thành viên có trong data.members
+      filteredMonths[month] = {};
+      for (const member of members) {
+        if (monthData.hasOwnProperty(member)) {
+          filteredMonths[month][member] = monthData[member];
+        }
+      }
+    }
+  }
+
+  return filteredMonths;
 };
 
 //Hàm xử lý dữ liệu
@@ -186,8 +279,9 @@ const UpdateData = async (data) => {
       }
     }
   }
-
+  const filteredData = await Is_memberOrg_by6month(data, data.members);
   // Cập nhật lại data với các tổng số liệu mới
+  data.by6month = filteredData;
   data.repos = updatedRepos;
   data.totalStars = totalStars;
   data.totalPRs = totalPRs;
@@ -294,6 +388,11 @@ getORGInfo(orgname)
           mergedPullRequests: repoMergedPRs,
         };
       }
+
+      const contributionsLast6Months = await getContributionsLast6Months(
+        orgname
+      );
+      data.by6month = contributionsLast6Months;
 
       await UpdateData(data); // Cập nhật dữ liệu sau khi lấy tất cả thông tin repo
       saveDataToFile(data); // Lưu dữ liệu sau khi cập nhật

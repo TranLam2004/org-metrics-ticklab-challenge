@@ -194,6 +194,32 @@
       "mergedPullRequests": 0
     }
   },
+  "by6month": {
+    "7/2024": {
+      "phucvinh57": 21,
+      "quannhg": 4
+    },
+    "6/2024": {
+      "quannhg": 4
+    },
+    "5/2024": {
+      "phucvinh57": 6,
+      "quannhg": 12
+    },
+    "4/2024": {
+      "ngyngcphu": 8,
+      "quannhg": 18
+    },
+    "3/2024": {
+      "ngyngcphu": 3,
+      "phucvinh57": 4
+    },
+    "2/2024": {
+      "ngyngcphu": 16,
+      "phucvinh57": 6,
+      "quannhg": 3
+    }
+  },
   "totalStars": 58,
   "totalPRs": 127,
   "totalMergedPRs": 153,

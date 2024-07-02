@@ -110,3 +110,20 @@ const saveDataToFile = (data) => {
     console.error("Lỗi khi lưu dữ liệu vào tệp:", error.message);
   }
 };
+
+// Hàm kiểm tra xem có thành viên nào trong danh sách members xuất hiện trong mỗi tháng của data.by6month
+const Is_memberOrg_by6month = async (data, members) => {
+  // Duyệt qua từng tháng trong data.by6month
+  for (const month in data) {
+    const monthData = data[month];
+
+    // Duyệt qua các thành viên để kiểm tra xem có xuất hiện trong tháng hiện tại không
+    for (const member of members) {
+      if (monthData.hasOwnProperty(member)) {
+        return true; // Nếu có thành viên xuất hiện, trả về true
+      }
+    }
+  }
+
+  return false; // Nếu không có thành viên nào xuất hiện, trả về false
+};
