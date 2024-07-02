@@ -196,28 +196,53 @@
   },
   "by6month": {
     "7/2024": {
+      "amyranotamirror": 0,
+      "ngyngcphu": 0,
       "phucvinh57": 21,
-      "quannhg": 4
+      "quannhg": 4,
+      "total": 25
     },
     "6/2024": {
-      "quannhg": 4
+      "amyranotamirror": 0,
+      "ngyngcphu": 0,
+      "phucvinh57": 0,
+      "quannhg": 4,
+      "total": 4
     },
     "5/2024": {
+      "amyranotamirror": 0,
+      "ngyngcphu": 0,
       "phucvinh57": 6,
-      "quannhg": 12
+      "quannhg": 12,
+      "total": 18
     },
     "4/2024": {
+      "amyranotamirror": 0,
       "ngyngcphu": 8,
-      "quannhg": 18
+      "phucvinh57": 0,
+      "quannhg": 18,
+      "total": 26
     },
     "3/2024": {
+      "amyranotamirror": 0,
       "ngyngcphu": 3,
-      "phucvinh57": 4
+      "phucvinh57": 4,
+      "quannhg": 0,
+      "total": 7
     },
     "2/2024": {
+      "amyranotamirror": 0,
       "ngyngcphu": 16,
       "phucvinh57": 6,
-      "quannhg": 3
+      "quannhg": 3,
+      "total": 25
+    },
+    "summary": {
+      "amyranotamirror": 0,
+      "ngyngcphu": 27,
+      "phucvinh57": 37,
+      "quannhg": 41,
+      "total": 105
     }
   },
   "totalStars": 58,

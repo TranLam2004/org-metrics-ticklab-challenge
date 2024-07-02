@@ -200,24 +200,40 @@ const Is_memberOrg = async (repos, members) => {
 
 const Is_memberOrg_by6month = async (data, members) => {
   let filteredMonths = {};
+  let totalAllMonths = {};
+
+  // Khởi tạo tổng hợp cho tất cả các thành viên
+  for (const member of members) {
+    totalAllMonths[member] = 0;
+  }
+  totalAllMonths["total"] = 0;
 
   // Duyệt qua từng tháng trong data.by6month
   for (const month in data.by6month) {
     const monthData = data.by6month[month];
 
-    // Kiểm tra xem có thành viên nào xuất hiện trong tháng hiện tại không
-    let hasMember = members.some((member) => monthData.hasOwnProperty(member));
+    // Tạo đối tượng mới để lưu dữ liệu của tháng hiện tại
+    filteredMonths[month] = {};
+    let total = 0;
 
-    if (hasMember) {
-      // Nếu có thành viên xuất hiện, chỉ giữ lại những thành viên có trong data.members
-      filteredMonths[month] = {};
-      for (const member of members) {
-        if (monthData.hasOwnProperty(member)) {
-          filteredMonths[month][member] = monthData[member];
-        }
+    // Duyệt qua danh sách các thành viên
+    for (const member of members) {
+      if (monthData.hasOwnProperty(member)) {
+        filteredMonths[month][member] = monthData[member];
+        total += monthData[member];
+        totalAllMonths[member] += monthData[member];
+      } else {
+        filteredMonths[month][member] = 0;
       }
     }
+
+    // Thêm tổng hợp của tháng vào đối tượng
+    filteredMonths[month]["total"] = total;
+    totalAllMonths["total"] += total;
   }
+
+  // Thêm tổng hợp của tất cả các tháng vào dữ liệu đã lọc
+  filteredMonths["summary"] = totalAllMonths;
 
   return filteredMonths;
 };
