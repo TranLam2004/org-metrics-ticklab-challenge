@@ -6,18 +6,22 @@ const orgname = "TickLabVN";
 
 // Hàm để lấy dữ liệu JSON từ URL và xử lý lỗi nếu có
 const fetchJSON = async (url) => {
-  const response = await fetch(url, {
-    method: "GET",
-    headers: {
-      Accept: "application/vnd.github.v3+json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  if (!response.ok) {
-    throw new Error(`Lỗi khi lấy dữ liệu: ${response.status}`);
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/vnd.github.v3+json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`Lỗi khi lấy dữ liệu: ${response.status}`);
+    }
+    const text = await response.text();
+    return text ? JSON.parse(text) : {};
+  } catch (error) {
+    console.error("Đã có lỗi xảy ra:", error.message);
   }
-  const text = await response.text();
-  return text ? JSON.parse(text) : {};
 };
 
 // Các hàm để lấy thông tin từ GitHub API
