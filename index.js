@@ -1,7 +1,9 @@
-require("dotenv").config();
-const fetch = require("node-fetch");
+import env from "dotenv";
+import fetch from "node-fetch";
+import fs from "fs";
 import core from "@actions/core";
-const fs = require("fs");
+
+env.config();
 //const token = process.env.TOKEN;
 //const orgname = "TickLabVN";
 
