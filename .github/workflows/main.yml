@@ -33,12 +33,12 @@ jobs:
           TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
       - name: Commit
+      - uses: actions/checkout@v2
         run: |
           git config --global user.name 'TranLam2004'
           git config --global user.email 'lam.tran0783365642@hcmut.edu.vn'
-          git checkout -b feat/action
           git add .
           git commit -m 'Update'
-          git push origin feat/action
+          git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
