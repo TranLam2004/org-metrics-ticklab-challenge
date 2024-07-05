@@ -5,12 +5,9 @@ on:
     - cron: "0 12 * * *"
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 
 permissions:
   contents: write
-  pull-requests: write
 jobs:
   update-readme:
     runs-on: ubuntu-latest
@@ -39,9 +36,8 @@ jobs:
         run: |
           git config --global user.name 'TranLam2004'
           git config --global user.email 'lam.tran0783365642@hcmut.edu.vn'
-          git config pull.rebase true
           git add .
           git commit -m 'Update'
-          git push -u origin feat/action
+          git push -u origin main
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
