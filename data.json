@@ -149,8 +149,8 @@
         "phucvinh57": 4
       },
       "stars": 35,
-      "pullRequests": 4,
-      "mergedPullRequests": 4
+      "pullRequests": 5,
+      "mergedPullRequests": 5
     },
     "org-metrics": {
       "contributions": 3,
@@ -206,15 +206,15 @@
       "amyranotamirror": 0,
       "ngyngcphu": 0,
       "phucvinh57": 0,
-      "quannhg": 4,
-      "total": 4
+      "quannhg": 5,
+      "total": 5
     },
     "5/2024": {
       "amyranotamirror": 0,
-      "ngyngcphu": 0,
-      "phucvinh57": 6,
-      "quannhg": 12,
-      "total": 18
+      "ngyngcphu": 3,
+      "phucvinh57": 0,
+      "quannhg": 4,
+      "total": 7
     },
     "4/2024": {
       "amyranotamirror": 0,
@@ -225,10 +225,10 @@
     },
     "3/2024": {
       "amyranotamirror": 0,
-      "ngyngcphu": 3,
+      "ngyngcphu": 5,
       "phucvinh57": 4,
       "quannhg": 0,
-      "total": 7
+      "total": 9
     },
     "2/2024": {
       "amyranotamirror": 0,
@@ -239,15 +239,15 @@
     },
     "summary": {
       "amyranotamirror": 0,
-      "ngyngcphu": 27,
-      "phucvinh57": 37,
-      "quannhg": 41,
-      "total": 105
+      "ngyngcphu": 32,
+      "phucvinh57": 31,
+      "quannhg": 34,
+      "total": 97
     }
   },
   "totalStars": 58,
-  "totalPRs": 127,
-  "totalMergedPRs": 153,
+  "totalPRs": 128,
+  "totalMergedPRs": 154,
   "totalContributions": 473,
   "totalLanguages": {
     "TypeScript": 382554,
