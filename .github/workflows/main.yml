@@ -33,7 +33,7 @@ jobs:
           TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
       - name: Commit
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
         run: |
           git config --global user.name 'TranLam2004'
           git config --global user.email 'lam.tran0783365642@hcmut.edu.vn'
