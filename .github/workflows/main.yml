@@ -34,3 +34,13 @@ jobs:
           TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         env:
           TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+
+      - name: Commit
+        run: |
+          git config --global user.name 'TranLam2004'
+          git config --global user.email 'lam.tran0783365642@hcmut.edu.vn'
+          git add .
+          git commit -m 'Update'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
