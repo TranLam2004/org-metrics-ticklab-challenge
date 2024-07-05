@@ -1,0 +1,47 @@
+name: JAVASCRIPT CI/CD
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run
+        uses: ./
+        with:
+          orgname: "TickLabVN"
+          TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        env:
+          TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+
+      - name: Commit
+        run: |
+          git config --global user.name 'TranLam2004'
+          git config --global user.email 'lam.tran0783365642@hcmut.edu.vn'
+          git config pull.rebase true
+          git add .
+          git commit -m 'Update'
+          git push -u origin feat/action
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
