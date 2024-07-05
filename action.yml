@@ -8,5 +8,5 @@ inputs:
     description: "secrets.GITHUB_TOKEN"
     required: true
 runs:
-  using: "node14"
+  using: "node20"
   main: "index.js"
