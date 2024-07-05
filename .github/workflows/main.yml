@@ -43,6 +43,7 @@ jobs:
           git pull origin feat/action
           git add .
           git commit -m 'Update'
+          git remote set-url origin https://TranLam2004:${{ secrets.GITHUB_TOKEN }}@github.com/org-metrics-ticklab-challenge
           git push origin HEAD:feat/action
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
