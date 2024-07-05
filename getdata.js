@@ -1,8 +1,9 @@
 require("dotenv").config();
 const fetch = require("node-fetch");
+import core from "@actions/core";
 const fs = require("fs");
-const token = process.env.TOKEN;
-const orgname = "TickLabVN"; // Thay thế bằng tên tổ chức của bạn
+const token = core.getInput("TOKEN");
+const orgname = core.getInput("orgname"); // Thay thế bằng tên tổ chức của bạn
 
 // Hàm để lấy dữ liệu JSON từ URL và xử lý lỗi nếu có
 const fetchJSON = async (url) => {

@@ -1,0 +1,12 @@
+name: "Template"
+description: ""
+inputs:
+  orgname:
+    description: "ex: TickLabVN"
+    required: true
+  TOKEN:
+    description: "secrets.GITHUB_TOKEN"
+    required: true
+runs:
+  using: "node14"
+  main: "index.js"
