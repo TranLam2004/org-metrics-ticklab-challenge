@@ -11,33 +11,33 @@ on:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-        node-version: '14'
+          node-version: '14'
 
       - name: Install dependencies
         run: npm install
 
-       - name: Run
-         run: npm run start:index
-         with:
-           orgname: "TickLabVN"
-           TOKEN: ${{ secrets.GITHUB_TOKEN }}
-         env:
-           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run
+        run: npm run start:index
+        with:
+          orgname: "TickLabVN"
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-       - name: Commit
-         run: |
-           git config --global user.name 'TranLam2004'
-           git config --global user.email 'lam.tran0783365642@hcmut.edu.vn'
-           git add README.md
-           git commit -m 'Update'
-           git push
-         env:
-           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit
+        run: |
+          git config --global user.name 'TranLam2004'
+          git config --global user.email 'lam.tran0783365642@hcmut.edu.vn'
+          git add README.md
+          git commit -m 'Update'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
