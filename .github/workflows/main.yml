@@ -25,7 +25,7 @@ jobs:
         run: npm install
 
       - name: Run
-        run: npm run start:index
+        uses: ./
         with:
           orgname: "TickLabVN"
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
