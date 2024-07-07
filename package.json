@@ -5,15 +5,19 @@
   "description": "��#\u0000 \u0000o\u0000r\u0000g\u0000-\u0000m\u0000e\u0000t\u0000r\u0000i\u0000c\u0000s\u0000-\u0000t\u0000i\u0000c\u0000k\u0000l\u0000a\u0000b\u0000-\u0000c\u0000h\u0000a\u0000l\u0000l\u0000e\u0000n\u0000g\u0000e\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
-    "start:getdata": "node getdata.js",
+    "graph": "node TOPNG/chart.cjs",
     "start:index": "node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@actions/core": "^1.10.1",
+    "canvas": "^2.11.2",
+    "chart.js": "^4.4.3",
+    "chartjs-plugin-datalabels": "^2.2.0",
     "is-ci": "^3.0.1",
-    "node-fetch": "^2.7.0"
+    "node-fetch": "^2.7.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@types/is-ci": "^3.0.4",
