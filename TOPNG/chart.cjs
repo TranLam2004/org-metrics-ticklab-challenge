@@ -47,7 +47,18 @@ function createLanguagesChart(data) {
     "#249324", // darkened limegreen
     "#167E7E", // darkened lightseagreen
   ];
-
+  // Thêm plugin vẽ nền
+  const backgroundColorPlugin = {
+    id: "customCanvasBackgroundColor",
+    beforeDraw: (chart) => {
+      const ctx = chart.canvas.getContext("2d");
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = "white"; // Màu nền của ảnh
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
+    },
+  };
   const totalLanguagesChart = new Chart(ctx, {
     type: "pie",
     data: {
@@ -72,6 +83,14 @@ function createLanguagesChart(data) {
             color: "black",
           },
         },
+        title: {
+          display: true,
+          text: "Total Languages",
+          color: "black",
+          font: {
+            size: 20,
+          },
+        },
         datalabels: {
           formatter: (value, context) => {
             const percentage = ((value / totalLines) * 100).toFixed(2) + "%";
@@ -88,7 +107,7 @@ function createLanguagesChart(data) {
         padding: 20,
       },
     },
-    plugins: [ChartDataLabels],
+    plugins: [ChartDataLabels, backgroundColorPlugin],
   });
   const svgBuffer = canvas.toBuffer("image/svg+xml");
   fs.writeFileSync(
@@ -102,6 +121,18 @@ function createTotalCommitChart(data) {
   const canvas = createCanvas(600, 400, "svg");
   const ctx = canvas.getContext("2d");
   const totalMemberCommits = data.totalMemberCommits;
+  // Thêm plugin vẽ nền
+  const backgroundColorPlugin = {
+    id: "customCanvasBackgroundColor",
+    beforeDraw: (chart) => {
+      const ctx = chart.canvas.getContext("2d");
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = "white"; // Màu nền của ảnh
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
+    },
+  };
   const totalCommitsChart = new Chart(ctx, {
     type: "bar",
     data: {
@@ -142,6 +173,14 @@ function createTotalCommitChart(data) {
             color: "black", // Màu của nhãn trong chú thích (legend)
           },
         },
+        title: {
+          display: true,
+          text: "Total Commits By Members",
+          color: "black",
+          font: {
+            size: 20,
+          },
+        },
         datalabels: {
           display: true,
           align: "end",
@@ -151,7 +190,7 @@ function createTotalCommitChart(data) {
         },
       },
     },
-    plugins: [ChartDataLabels],
+    plugins: [ChartDataLabels, backgroundColorPlugin],
   });
 
   const svgBuffer = canvas.toBuffer("image/svg+xml");
@@ -166,6 +205,18 @@ function createTotalCommitBy6MonthChart(data) {
   const canvas = createCanvas(600, 400, "svg");
   const ctx = canvas.getContext("2d");
   const totalMemberCommits = data.by6month.summary;
+  // Thêm plugin vẽ nền
+  const backgroundColorPlugin = {
+    id: "customCanvasBackgroundColor",
+    beforeDraw: (chart) => {
+      const ctx = chart.canvas.getContext("2d");
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = "white"; // Màu nền của ảnh
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
+    },
+  };
   const totalCommits6MonthChart = new Chart(ctx, {
     type: "bar",
     data: {
@@ -206,6 +257,14 @@ function createTotalCommitBy6MonthChart(data) {
             color: "black", // Màu của nhãn trong chú thích (legend)
           },
         },
+        title: {
+          display: true,
+          text: "Total Commits By Members (Last 6 Months)",
+          color: "black",
+          font: {
+            size: 20,
+          },
+        },
         datalabels: {
           display: true,
           align: "end",
@@ -215,7 +274,7 @@ function createTotalCommitBy6MonthChart(data) {
         },
       },
     },
-    plugins: [ChartDataLabels],
+    plugins: [ChartDataLabels, backgroundColorPlugin],
   });
 
   const svgBuffer = canvas.toBuffer("image/svg+xml");
@@ -233,7 +292,18 @@ function createContributionsBy6MonthChart(data) {
   const months = Object.keys(by6month)
     .filter((month) => month !== "summary")
     .reverse();
-
+  // Thêm plugin vẽ nền
+  const backgroundColorPlugin = {
+    id: "customCanvasBackgroundColor",
+    beforeDraw: (chart) => {
+      const ctx = chart.canvas.getContext("2d");
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = "white"; // Màu nền của ảnh
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
+    },
+  };
   const contributionsByOrgChart = new Chart(ctx, {
     type: "line",
     data: {
@@ -276,6 +346,14 @@ function createContributionsBy6MonthChart(data) {
             color: "black", // Màu của nhãn trong chú thích (legend)
           },
         },
+        title: {
+          display: true,
+          text: "Total Contributions By ORG (per month for the past 6 months)",
+          color: "black",
+          font: {
+            size: 20,
+          },
+        },
         datalabels: {
           display: true,
           align: "top",
@@ -285,7 +363,7 @@ function createContributionsBy6MonthChart(data) {
         },
       },
     },
-    plugins: [ChartDataLabels],
+    plugins: [ChartDataLabels, backgroundColorPlugin],
   });
 
   const svgBuffer = canvas.toBuffer("image/svg+xml");
@@ -332,6 +410,18 @@ function createMenbersBy6MonthChart(data) {
     borderWidth: 1,
   }));
 
+  // Thêm plugin vẽ nền
+  const backgroundColorPlugin = {
+    id: "customCanvasBackgroundColor",
+    beforeDraw: (chart) => {
+      const ctx = chart.canvas.getContext("2d");
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = "white"; // Màu nền của ảnh
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
+    },
+  };
   // Tạo biểu đồ sử dụng Chart.js
   const stackedBarChart = new Chart(ctx, {
     type: "bar",
@@ -367,6 +457,14 @@ function createMenbersBy6MonthChart(data) {
             color: "black", // Màu của nhãn trong chú thích (legend)
           },
         },
+        title: {
+          display: true,
+          text: "Commits by Members  (per month for the past 6 months)",
+          color: "black",
+          font: {
+            size: 20,
+          },
+        },
         datalabels: {
           display: true,
           color: "black",
@@ -374,7 +472,7 @@ function createMenbersBy6MonthChart(data) {
         },
       },
     },
-    plugins: [ChartDataLabels],
+    plugins: [ChartDataLabels, backgroundColorPlugin],
   });
   const svgBuffer = canvas.toBuffer("image/svg+xml");
   fs.writeFileSync(
@@ -399,6 +497,19 @@ function createChart(data) {
     data.totalMergedPRs,
     data.totalContributions,
   ];
+  // Thêm plugin vẽ nền
+  const backgroundColorPlugin = {
+    id: "customCanvasBackgroundColor",
+    beforeDraw: (chart) => {
+      const ctx = chart.canvas.getContext("2d");
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = "white"; // Màu nền của ảnh
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
+    },
+  };
+
   const totalChart = new Chart(ctx, {
     type: "bar",
     data: {
@@ -439,6 +550,14 @@ function createChart(data) {
             color: "black", // Màu của nhãn trong chú thích (legend)
           },
         },
+        title: {
+          display: true,
+          text: "Total Information",
+          color: "black",
+          font: {
+            size: 20,
+          },
+        },
         datalabels: {
           display: true,
           align: "end",
@@ -448,7 +567,7 @@ function createChart(data) {
         },
       },
     },
-    plugins: [ChartDataLabels],
+    plugins: [ChartDataLabels, backgroundColorPlugin],
   });
   // Lưu biểu đồ vào file .svg
   const svgBuffer = canvas.toBuffer("image/svg+xml");
