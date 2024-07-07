@@ -20,6 +20,7 @@ fs.readFile(dataFilePath, "utf8", (err, jsonString) => {
     createTotalCommitBy6MonthChart(data);
     createContributionsBy6MonthChart(data);
     createMenbersBy6MonthChart(data);
+    createChart(data);
   } catch (err) {
     console.log("Error parsing JSON string:", err);
   }
@@ -377,6 +378,81 @@ function createMenbersBy6MonthChart(data) {
   });
   const out = fs.createWriteStream(
     path.resolve(__dirname, "img", "MenberCommitBy6MonthChart.png")
+  );
+  const stream = canvas.createPNGStream();
+  stream.pipe(out);
+  out.on("finish", () => console.log("The PNG file was created."));
+}
+
+function createChart(data) {
+  const canvas = createCanvas(600, 400);
+  const ctx = canvas.getContext("2d");
+  const labels = [
+    "Total Stars",
+    "Total PRs",
+    "Total Merged PRs",
+    "Total Contributions",
+  ];
+  const values = [
+    data.totalStars,
+    data.totalPRs,
+    data.totalMergedPRs,
+    data.totalContributions,
+  ];
+  const totalChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: "Information",
+          data: values,
+          backgroundColor: "#249324",
+          borderColor: "#249324",
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: "white", // Màu của các nhãn trục y
+          },
+          grid: {
+            color: "rgba(255, 255, 255, 0.2)", // Màu của các đường kẻ lưới trục y
+          },
+        },
+        x: {
+          ticks: {
+            color: "white", // Màu của các nhãn trục x
+          },
+          grid: {
+            color: "rgba(255, 255, 255, 0.2)", // Màu của các đường kẻ lưới trục x
+          },
+        },
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: "white", // Màu của nhãn trong chú thích (legend)
+          },
+        },
+        datalabels: {
+          display: true,
+          align: "end",
+          anchor: "end",
+          formatter: (value) => value,
+          color: "white", // Màu của nhãn dữ liệu
+        },
+      },
+    },
+    plugins: [ChartDataLabels],
+  });
+
+  const out = fs.createWriteStream(
+    path.resolve(__dirname, "img", "Information.png")
   );
   const stream = canvas.createPNGStream();
   stream.pipe(out);
