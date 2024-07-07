@@ -27,7 +27,7 @@ fs.readFile(dataFilePath, "utf8", (err, jsonString) => {
 });
 
 function createLanguagesChart(data) {
-  const canvas = createCanvas(600, 400);
+  const canvas = createCanvas(600, 400, "svg");
   const ctx = canvas.getContext("2d");
 
   const totalLanguages = data.totalLanguages;
@@ -69,7 +69,7 @@ function createLanguagesChart(data) {
       plugins: {
         legend: {
           labels: {
-            color: "white",
+            color: "black",
           },
         },
         datalabels: {
@@ -77,7 +77,7 @@ function createLanguagesChart(data) {
             const percentage = ((value / totalLines) * 100).toFixed(2) + "%";
             return percentage;
           },
-          color: "white",
+          color: "black",
           font: {
             weight: "bold",
             size: 12,
@@ -90,16 +90,16 @@ function createLanguagesChart(data) {
     },
     plugins: [ChartDataLabels],
   });
-  const out = fs.createWriteStream(
-    path.resolve(__dirname, "img", "TotalLanguagesChart.png")
+  const svgBuffer = canvas.toBuffer("image/svg+xml");
+  fs.writeFileSync(
+    path.join(__dirname, "img", "TotalLanguages.svg"),
+    svgBuffer
   );
-  const stream = canvas.createPNGStream();
-  stream.pipe(out);
-  out.on("finish", () => console.log("The PNG file was created."));
+  console.log("The SVG file was created.");
 }
 
 function createTotalCommitChart(data) {
-  const canvas = createCanvas(600, 400);
+  const canvas = createCanvas(600, 400, "svg");
   const ctx = canvas.getContext("2d");
   const totalMemberCommits = data.totalMemberCommits;
   const totalCommitsChart = new Chart(ctx, {
@@ -121,25 +121,25 @@ function createTotalCommitChart(data) {
         y: {
           beginAtZero: true,
           ticks: {
-            color: "white", // Màu của các nhãn trục y
+            color: "black", // Màu của các nhãn trục y
           },
           grid: {
-            color: "rgba(255, 255, 255, 0.2)", // Màu của các đường kẻ lưới trục y
+            color: "black", // Màu của các đường kẻ lưới trục y
           },
         },
         x: {
           ticks: {
-            color: "white", // Màu của các nhãn trục x
+            color: "black", // Màu của các nhãn trục x
           },
           grid: {
-            color: "rgba(255, 255, 255, 0.2)", // Màu của các đường kẻ lưới trục x
+            color: "black", // Màu của các đường kẻ lưới trục x
           },
         },
       },
       plugins: {
         legend: {
           labels: {
-            color: "white", // Màu của nhãn trong chú thích (legend)
+            color: "black", // Màu của nhãn trong chú thích (legend)
           },
         },
         datalabels: {
@@ -147,23 +147,23 @@ function createTotalCommitChart(data) {
           align: "end",
           anchor: "end",
           formatter: (value) => value,
-          color: "white", // Màu của nhãn dữ liệu
+          color: "black", // Màu của nhãn dữ liệu
         },
       },
     },
     plugins: [ChartDataLabels],
   });
 
-  const out = fs.createWriteStream(
-    path.resolve(__dirname, "img", "TotalCommitByChart.png")
+  const svgBuffer = canvas.toBuffer("image/svg+xml");
+  fs.writeFileSync(
+    path.join(__dirname, "img", "TotalMembersCommit.svg"),
+    svgBuffer
   );
-  const stream = canvas.createPNGStream();
-  stream.pipe(out);
-  out.on("finish", () => console.log("The PNG file was created."));
+  console.log("The SVG file was created.");
 }
 
 function createTotalCommitBy6MonthChart(data) {
-  const canvas = createCanvas(600, 400);
+  const canvas = createCanvas(600, 400, "svg");
   const ctx = canvas.getContext("2d");
   const totalMemberCommits = data.by6month.summary;
   const totalCommits6MonthChart = new Chart(ctx, {
@@ -185,25 +185,25 @@ function createTotalCommitBy6MonthChart(data) {
         y: {
           beginAtZero: true,
           ticks: {
-            color: "white", // Màu của các nhãn trục y
+            color: "black", // Màu của các nhãn trục y
           },
           grid: {
-            color: "rgba(255, 255, 255, 0.2)", // Màu của các đường kẻ lưới trục y
+            color: "black", // Màu của các đường kẻ lưới trục y
           },
         },
         x: {
           ticks: {
-            color: "white", // Màu của các nhãn trục x
+            color: "black", // Màu của các nhãn trục x
           },
           grid: {
-            color: "rgba(255, 255, 255, 0.2)", // Màu của các đường kẻ lưới trục x
+            color: "black", // Màu của các đường kẻ lưới trục x
           },
         },
       },
       plugins: {
         legend: {
           labels: {
-            color: "white", // Màu của nhãn trong chú thích (legend)
+            color: "black", // Màu của nhãn trong chú thích (legend)
           },
         },
         datalabels: {
@@ -211,23 +211,23 @@ function createTotalCommitBy6MonthChart(data) {
           align: "end",
           anchor: "end",
           formatter: (value) => value,
-          color: "white", // Màu của nhãn dữ liệu
+          color: "black", // Màu của nhãn dữ liệu
         },
       },
     },
     plugins: [ChartDataLabels],
   });
 
-  const out = fs.createWriteStream(
-    path.resolve(__dirname, "img", "TotalCommitby6MonthChart.png")
+  const svgBuffer = canvas.toBuffer("image/svg+xml");
+  fs.writeFileSync(
+    path.join(__dirname, "img", "TotalMembersCommitBy6Month.svg"),
+    svgBuffer
   );
-  const stream = canvas.createPNGStream();
-  stream.pipe(out);
-  out.on("finish", () => console.log("The PNG file was created."));
+  console.log("The SVG file was created.");
 }
 
 function createContributionsBy6MonthChart(data) {
-  const canvas = createCanvas(600, 400);
+  const canvas = createCanvas(600, 400, "svg");
   const ctx = canvas.getContext("2d");
   const by6month = data.by6month;
   const months = Object.keys(by6month)
@@ -255,25 +255,25 @@ function createContributionsBy6MonthChart(data) {
         y: {
           beginAtZero: true,
           ticks: {
-            color: "white", // Màu của các nhãn trục y
+            color: "black", // Màu của các nhãn trục y
           },
           grid: {
-            color: "rgba(255, 255, 255, 0.2)", // Màu của các đường kẻ lưới trục y
+            color: "black", // Màu của các đường kẻ lưới trục y
           },
         },
         x: {
           ticks: {
-            color: "white", // Màu của các nhãn trục x
+            color: "black", // Màu của các nhãn trục x
           },
           grid: {
-            color: "rgba(255, 255, 255, 0.2)", // Màu của các đường kẻ lưới trục x
+            color: "black", // Màu của các đường kẻ lưới trục x
           },
         },
       },
       plugins: {
         legend: {
           labels: {
-            color: "white", // Màu của nhãn trong chú thích (legend)
+            color: "black", // Màu của nhãn trong chú thích (legend)
           },
         },
         datalabels: {
@@ -281,23 +281,23 @@ function createContributionsBy6MonthChart(data) {
           align: "top",
           anchor: "end",
           formatter: (value) => value,
-          color: "white",
+          color: "black",
         },
       },
     },
     plugins: [ChartDataLabels],
   });
 
-  const out = fs.createWriteStream(
-    path.resolve(__dirname, "img", "TotalContributionsBy6MonthChart.png")
+  const svgBuffer = canvas.toBuffer("image/svg+xml");
+  fs.writeFileSync(
+    path.join(__dirname, "img", "TotalContributionsBy6Month.svg"),
+    svgBuffer
   );
-  const stream = canvas.createPNGStream();
-  stream.pipe(out);
-  out.on("finish", () => console.log("The PNG file was created."));
+  console.log("The SVG file was created.");
 }
 
 function createMenbersBy6MonthChart(data) {
-  const canvas = createCanvas(600, 400);
+  const canvas = createCanvas(600, 400, "svg");
   const ctx = canvas.getContext("2d");
   // Màu sắc đa dạng và đậm
   // Màu sắc đa dạng và đậm
@@ -345,47 +345,47 @@ function createMenbersBy6MonthChart(data) {
           stacked: true,
           beginAtZero: true,
           ticks: {
-            color: "white", // Màu của các nhãn trục y
+            color: "black", // Màu của các nhãn trục y
           },
           grid: {
-            color: "rgba(255, 255, 255, 0.2)", // Màu của các đường kẻ lưới trục y
+            color: "black", // Màu của các đường kẻ lưới trục y
           },
         },
         x: {
           stacked: true,
           ticks: {
-            color: "white", // Màu của các nhãn trục x
+            color: "black", // Màu của các nhãn trục x
           },
           grid: {
-            color: "rgba(255, 255, 255, 0.2)", // Màu của các đường kẻ lưới trục x
+            color: "black", // Màu của các đường kẻ lưới trục x
           },
         },
       },
       plugins: {
         legend: {
           labels: {
-            color: "white", // Màu của nhãn trong chú thích (legend)
+            color: "black", // Màu của nhãn trong chú thích (legend)
           },
         },
         datalabels: {
           display: true,
-          color: "white",
+          color: "black",
           formatter: (value) => value,
         },
       },
     },
     plugins: [ChartDataLabels],
   });
-  const out = fs.createWriteStream(
-    path.resolve(__dirname, "img", "MenberCommitBy6MonthChart.png")
+  const svgBuffer = canvas.toBuffer("image/svg+xml");
+  fs.writeFileSync(
+    path.join(__dirname, "img", "MemberCommitBy6Month.svg"),
+    svgBuffer
   );
-  const stream = canvas.createPNGStream();
-  stream.pipe(out);
-  out.on("finish", () => console.log("The PNG file was created."));
+  console.log("The SVG file was created.");
 }
 
 function createChart(data) {
-  const canvas = createCanvas(600, 400);
+  const canvas = createCanvas(600, 400, "svg");
   const ctx = canvas.getContext("2d");
   const labels = [
     "Total Stars",
@@ -418,25 +418,25 @@ function createChart(data) {
         y: {
           beginAtZero: true,
           ticks: {
-            color: "white", // Màu của các nhãn trục y
+            color: "black", // Màu của các nhãn trục y
           },
           grid: {
-            color: "rgba(255, 255, 255, 0.2)", // Màu của các đường kẻ lưới trục y
+            color: "black", // Màu của các đường kẻ lưới trục y
           },
         },
         x: {
           ticks: {
-            color: "white", // Màu của các nhãn trục x
+            color: "black", // Màu của các nhãn trục x
           },
           grid: {
-            color: "rgba(255, 255, 255, 0.2)", // Màu của các đường kẻ lưới trục x
+            color: "black", // Màu của các đường kẻ lưới trục x
           },
         },
       },
       plugins: {
         legend: {
           labels: {
-            color: "white", // Màu của nhãn trong chú thích (legend)
+            color: "black", // Màu của nhãn trong chú thích (legend)
           },
         },
         datalabels: {
@@ -444,17 +444,14 @@ function createChart(data) {
           align: "end",
           anchor: "end",
           formatter: (value) => value,
-          color: "white", // Màu của nhãn dữ liệu
+          color: "black", // Màu của nhãn dữ liệu
         },
       },
     },
     plugins: [ChartDataLabels],
   });
-
-  const out = fs.createWriteStream(
-    path.resolve(__dirname, "img", "Information.png")
-  );
-  const stream = canvas.createPNGStream();
-  stream.pipe(out);
-  out.on("finish", () => console.log("The PNG file was created."));
+  // Lưu biểu đồ vào file .svg
+  const svgBuffer = canvas.toBuffer("image/svg+xml");
+  fs.writeFileSync(path.join(__dirname, "img", "Information.svg"), svgBuffer);
+  console.log("The SVG file was created.");
 }
