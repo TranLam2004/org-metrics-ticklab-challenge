@@ -46,6 +46,17 @@ function createLanguagesChart(data) {
     "#701C1C", // darkened brown
     "#249324", // darkened limegreen
     "#167E7E", // darkened lightseagreen
+    "#FF5733", // bold orange-red
+    "#33FF57", // bold green
+    "#3357FF", // bold blue
+    "#FF33A1", // bold pink
+    "#FFD700", // bold gold
+    "#8A2BE2", // bold blueviolet
+    "#DC143C", // bold crimson
+    "#FF8C00", // bold darkorange
+    "#32CD32", // bold limegreen
+    "#8B0000", // bold darkred
+    "#00CED1", // bold darkturquoise
   ];
   // Thêm plugin vẽ nền
   const backgroundColorPlugin = {
@@ -81,6 +92,28 @@ function createLanguagesChart(data) {
         legend: {
           labels: {
             color: "black",
+            generateLabels: (chart) => {
+              const data = chart.data;
+              if (data.labels.length && data.datasets.length) {
+                return data.labels.map((label, i) => {
+                  const value = data.datasets[0].data[i];
+                  const total = data.datasets[0].data.reduce(
+                    (acc, val) => acc + val,
+                    0
+                  );
+                  const percentage = ((value / total) * 100).toFixed(2) + "%";
+                  return {
+                    text: `${label}: ${percentage}`,
+                    fillStyle: data.datasets[0].backgroundColor[i],
+                    strokeStyle: data.datasets[0].borderColor[i],
+                    lineWidth: data.datasets[0].borderWidth,
+                    hidden: !chart.getDataVisibility(i),
+                    index: i,
+                  };
+                });
+              }
+              return [];
+            },
           },
         },
         title: {
@@ -91,23 +124,12 @@ function createLanguagesChart(data) {
             size: 20,
           },
         },
-        datalabels: {
-          formatter: (value, context) => {
-            const percentage = ((value / totalLines) * 100).toFixed(2) + "%";
-            return percentage;
-          },
-          color: "black",
-          font: {
-            weight: "bold",
-            size: 12,
-          },
-        },
       },
       layout: {
         padding: 20,
       },
     },
-    plugins: [ChartDataLabels, backgroundColorPlugin],
+    plugins: [backgroundColorPlugin],
   });
   const svgBuffer = canvas.toBuffer("image/svg+xml");
   fs.writeFileSync(
@@ -392,6 +414,17 @@ function createMenbersBy6MonthChart(data) {
     "#701C1C", // darkened brown
     "#249324", // darkened limegreen
     "#167E7E", // darkened lightseagreen
+    "#FF5733", // bold orange-red
+    "#33FF57", // bold green
+    "#3357FF", // bold blue
+    "#FF33A1", // bold pink
+    "#FFD700", // bold gold
+    "#8A2BE2", // bold blueviolet
+    "#DC143C", // bold crimson
+    "#FF8C00", // bold darkorange
+    "#32CD32", // bold limegreen
+    "#8B0000", // bold darkred
+    "#00CED1", // bold darkturquoise
   ];
 
   // Chuẩn bị dữ liệu cho biểu đồ cột xếp chồng
