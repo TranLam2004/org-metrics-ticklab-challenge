@@ -32,9 +32,6 @@ jobs:
         env:
           TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
-      - name: GRAPH
-        run: npm run graph
-
       - name: Commit
         run: |
           git config --global user.name 'TranLam2004'
