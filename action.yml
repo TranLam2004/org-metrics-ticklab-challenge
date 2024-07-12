@@ -9,5 +9,5 @@ inputs:
     required: true
 runs:
   using: "node20"
-  main: "index.js"
-  post: "./TOPNG/chart.cjs"
+  pre: "index.js"
+  main: "./TOPNG/chart.cjs"
