@@ -52,7 +52,7 @@
         "quannhg": 79
       },
       "stars": 0,
-      "pullRequests": 30,
+      "pullRequests": 37,
       "mergedPullRequests": 35
     },
     ".github": {
@@ -79,7 +79,7 @@
         "ngyngcphu": 151
       },
       "stars": 2,
-      "pullRequests": 30,
+      "pullRequests": 62,
       "mergedPullRequests": 50
     },
     "TickLab-Challenge-FR": {
@@ -150,7 +150,7 @@
         "quannhg": 126
       },
       "stars": 2,
-      "pullRequests": 30,
+      "pullRequests": 37,
       "mergedPullRequests": 36
     },
     "MonoVINI": {
@@ -241,7 +241,7 @@
         "TanNguyen17112003": 17
       },
       "stars": 0,
-      "pullRequests": 30,
+      "pullRequests": 39,
       "mergedPullRequests": 31
     },
     "ssps-be": {
@@ -257,7 +257,7 @@
         "quannhg": 126
       },
       "stars": 0,
-      "pullRequests": 30,
+      "pullRequests": 55,
       "mergedPullRequests": 48
     },
     "git-workflow": {
@@ -315,7 +315,7 @@
         "phucvinh57": 1
       },
       "stars": 0,
-      "pullRequests": 30,
+      "pullRequests": 40,
       "mergedPullRequests": 40
     },
     "tpulse": {
@@ -337,7 +337,7 @@
         "TanNguyen17112003": 55
       },
       "stars": 19,
-      "pullRequests": 30,
+      "pullRequests": 51,
       "mergedPullRequests": 43
     },
     "tpulse-browser-extension": {
@@ -491,7 +491,11 @@
       "Minhtuei": 2,
       "ngyngcphu": 7,
       "nhthlinh": 0,
+<<<<<<< HEAD
       "phucvinh57": 1,
+=======
+      "phucvinh57": 0,
+>>>>>>> 482a69f (fix PRs)
       "quannhg": 12,
       "TanNguyen17112003": 9,
       "teddylethal": 0,
@@ -511,7 +515,11 @@
       "Minhtuei": 1,
       "ngyngcphu": 4,
       "nhthlinh": 16,
+<<<<<<< HEAD
       "phucvinh57": 6,
+=======
+      "phucvinh57": 7,
+>>>>>>> 482a69f (fix PRs)
       "quannhg": 0,
       "TanNguyen17112003": 13,
       "teddylethal": 0,
@@ -519,7 +527,11 @@
       "thaitran24": 0,
       "TranLam2004": 0,
       "VuHuy-cse-9": 0,
+<<<<<<< HEAD
       "total": 40
+=======
+      "total": 41
+>>>>>>> 482a69f (fix PRs)
     },
     "summary": {
       "amyranotamirror": 0,
@@ -543,7 +555,7 @@
     }
   },
   "totalStars": 65,
-  "totalPRs": 276,
+  "totalPRs": 387,
   "totalMergedPRs": 338,
   "totalContributions": 1584,
   "totalLanguages": {

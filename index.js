@@ -62,11 +62,23 @@ const getRepoStars = async (orgname, repo) => {
   return repoData.stargazers_count;
 };
 
-// Hàm lấy pull requests từ repo
 const getRepoPullRequests = async (orgname, repo) => {
-  const url = `https://api.github.com/repos/${orgname}/${repo}/pulls?state=all`;
-  const pulls = await fetchJSON(url);
-  return pulls.length;
+  let totalPRs = 0;
+  let page = 1;
+  const perPage = 100;
+  let url = `https://api.github.com/repos/${orgname}/${repo}/pulls?state=all&per_page=${perPage}&page=${page}`;
+
+  while (true) {
+    const pulls = await fetchJSON(url);
+    if (pulls.length === 0) {
+      break;
+    }
+    totalPRs += pulls.length;
+    page++;
+    url = `https://api.github.com/repos/${orgname}/${repo}/pulls?state=all&per_page=${perPage}&page=${page}`;
+  }
+
+  return totalPRs;
 };
 
 // Hàm lấy merged pull requests từ repo
@@ -74,7 +86,7 @@ const getRepoMergedPullRequests = async (orgname, repo) => {
   let mergedPRs = 0;
   let page = 1;
   const perPage = 100;
-  let url = `https://api.github.com/repos/${orgname}/${repo}/pulls?state=closed&per_page=${perPage}&page=${page}`;
+  let url = `https://api.github.com/repos/${orgname}/${repo}/pulls?state=all&per_page=${perPage}&page=${page}`;
 
   while (true) {
     const pulls = await fetchJSON(url);
@@ -87,7 +99,7 @@ const getRepoMergedPullRequests = async (orgname, repo) => {
       }
     });
     page++;
-    url = `https://api.github.com/repos/${orgname}/${repo}/pulls?state=closed&per_page=${perPage}&page=${page}`;
+    url = `https://api.github.com/repos/${orgname}/${repo}/pulls?state=all&per_page=${perPage}&page=${page}`;
   }
 
   return mergedPRs;
